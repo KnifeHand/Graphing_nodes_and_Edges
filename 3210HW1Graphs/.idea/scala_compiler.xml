@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="3210HW1Graphs,3210hw1graphs">
+      <option name="postfixOps" value="true" />
+      <option name="reflectiveCalls" value="true" />
+    </profile>
+  </component>
+</project>

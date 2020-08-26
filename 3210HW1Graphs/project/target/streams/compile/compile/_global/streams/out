@@ -1,0 +1,16 @@
+[error] C:\Users\Matt\3210HW1Graphs\project\HelloGraphStream.scala:9:21: not found: type SingleGraph
+[error]     val graph = new SingleGraph("hello")
+[error]                     ^
+[error] C:\Users\Matt\3210HW1Graphs\project\HelloGraphStream.scala:14:15: not found: type Node
+[error]     var node: Node = graph.addNode("A")
+[error]               ^
+[error] C:\Users\Matt\3210HW1Graphs\project\HelloGraphStream.scala:22:15: not found: type Edge
+[error]     var edge: Edge = graph.addEdge("AB", "A", "B", true)
+[error]               ^
+[error] C:\Users\Matt\3210HW1Graphs\project\HelloGraphStream.scala:25:19: not found: type Edge
+[error]     graph.addEdge[Edge]("CA", "C", "A", true)
+[error]                   ^
+[error] C:\Users\Matt\3210HW1Graphs\project\PLGraph.scala:10:21: not found: type MultiGraph
+[error]     val graph = new MultiGraph("PL")
+[error]                     ^
+[error] 5 errors found
