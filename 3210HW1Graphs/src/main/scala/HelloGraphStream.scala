@@ -8,7 +8,7 @@ object HelloGraphStream {
 
   def main(args: Array[String]): Unit = {
 
-    println("Hello World!")
+    println("Hello.java World!")
 
     // create graph
     val graph = new SingleGraph("hello")
