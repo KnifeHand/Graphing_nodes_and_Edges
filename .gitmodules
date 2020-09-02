@@ -1,3 +1,4 @@
 [submodule "help"]
-	path = help
-	url = C:\\Users\\Matt\\Documents\\School\\PrinciplesOfProgrammingLanguages
+	path = C:\\Users\\Matt\\Documents\\School\\PrinciplesOfProgrammingLanguages
+
+	url = https://github.com/KnifeHand/PrinciplesOfProgrammingLanguages.git
