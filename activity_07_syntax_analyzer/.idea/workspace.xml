@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a1d6f9c-82e6-4f2d-ad0d-94b94d36f466" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/PrinciplesOfProgrammingLanguages.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/PrinciplesOfProgrammingLanguages.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Activity5" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1hI2ev9fRPcHjtTmwyfIPte7Gdg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../activity_06_lexical_analyzer" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a1d6f9c-82e6-4f2d-ad0d-94b94d36f466" name="Default Changelist" comment="" />
+      <created>1599684385060</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599684385060</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="723" y="438" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog" timestamp="1600126917380">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="723" y="438" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1600126917380" />
+    <state x="259" y="279" key="FileChooserDialogImpl" timestamp="1600128036688">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="259" y="279" key="FileChooserDialogImpl/-1360.0.1360.738/0.0.1920.1050@0.0.1920.1050" timestamp="1599690577682" />
+    <state x="259" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600128036688" />
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599686176031">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1360.0.1360.738/0.0.1920.1050@0.0.1920.1050" timestamp="1599686176031" />
+  </component>
+</project>
