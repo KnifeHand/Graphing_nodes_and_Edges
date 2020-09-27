@@ -5,6 +5,7 @@
  */
 
 /*
+--------------Grammar-------------------
 expression  = term expression’
 expression' = ( ´+´  | ´-´ ) term expression’ | epsilon
 term       = factor term’
@@ -16,12 +17,21 @@ literal    = digit { digit }
 digit      = ´0´ | ´1´ | ´2´ | ´3´ | ´4´ | ´5´ | ´6´ | ´7´ | ´8´ | ´9´
  */
 
+// Primary contructor
 class SyntaxAnalyzer(private var source: String) {
 
+  // "The syntax analyzer needs the iterator so it can query the LexicalAnalyzer for the next token"
   private var it = new LexicalAnalyzer(source).iterator
+  // "new instance variable that uses LexemeUnit class".  "If we call getLexemeUnit() a new LexemeUnit
+  // will be taken from the LexicalAnalyzer stream"
   private var lexemeUnit: LexemeUnit = null
 
+  // private helper method
   private def getLexemeUnit() = {
+    // "it will only query the LexicalAnalyzer if the lexeme object is null"
+    // "Compare the current value of the lexemeUnit", " should not query the LexicalAnalyzer all the time
+    //  because only after when it consumes the token" ??? "Avoid querying the LexAnalyzer".
+    // "If lexemeUnit is not null, then is has yet to be consumed and added to the parse stream."
     if (lexemeUnit == null)
       lexemeUnit = it.next()
   }

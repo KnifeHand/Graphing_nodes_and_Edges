@@ -4,6 +4,15 @@ import scala.io.Source
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
  * Description: Activity 07 - Lexical Analyzer
+ *-----------Grammar--------------where each branch is a tree by itself
+ * expression = term expression’
+ * expression' = ( ´+´ | ´-´ ) term expression’ | epsilon
+ * term = factor term’
+ * term' = ( ´*´ | ´/´ ) factor term’ | epsilon factor = identifier | literal | ´(´ expression ´)´
+ * factor = identifier | literal | ´(´ expression ´)´
+ * identifier = letter { ( letter | digit ) }
+ * letter = ´a´ | ´b´ | ´c´ | ´d´ | ´e´ | ´f´ | ´g´ | ´h´ | ´i´ | ´j´ | ´k´ | ´l´ | ´m´ | ´n´ | ´o´ | ´p´ | ´q´ | ´r´ | ´s´ | ´t´ | ´u´ | ´v´ | ´w´ | ´x´ | ´y´ | ´z´
+ * literal = digit { digit } digit = ´0´ | ´1´ | ´2´ | ´3´ | ´4´ | ´5´ | ´6´ | ´7´ | ´8´ | ´9´
  */
 
 class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {

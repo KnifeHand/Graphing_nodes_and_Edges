@@ -13,6 +13,18 @@ class Tree(var label: String) {
 
   private val branches: ArrayBuffer[Tree] = new ArrayBuffer[Tree]
   // Allows you to add branches
+
+//  defaddOne(elem: A): ArrayBuffer.this.type
+//  >>Adds a single element to this array buffer.
+//
+//  elem
+//  the element to add.
+//
+//  returns
+//  the array buffer itself
+//
+//  Definition Classes
+//    ArrayBuffer → Growable
   def add(branch: Tree): Unit = branches.addOne(branch) // FIXME: addOne is not a value member?
 
   // print the tree horizontally in a text format
