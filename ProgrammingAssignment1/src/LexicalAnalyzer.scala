@@ -1,3 +1,5 @@
+import LexicalAnalyzer.{OPERATOR_PUNCTUATOR_TO_TOKEN, WORD_TO_TOKEN}
+
 import scala.io.Source
 
 /*
@@ -200,7 +202,7 @@ object LexicalAnalyzer {
     "false" -> Token.BOOL_LITERAL,
     "var" -> Token.VAR_STMT,
     "Integer" -> Token.TYPE_STMT,
-    "Boolean" -> Token.TYPE_STMT
+    "Boolean" -> Token.TYPE_STMT)
 
   val OPERATOR_PUNCTUATOR_TO_TOKEN = Map(
     // arithmetic operators
