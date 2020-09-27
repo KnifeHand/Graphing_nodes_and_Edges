@@ -85,120 +85,94 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
             var c = input(0)
             var charClass = getCharClass(c)
 
-            // TODO: recognize a meta-identifier
             if (charClass == CharClass.LETTER) {
               input = input.substring(1)
               lexeme += c
-              var done = false
-              while (!done) {
+              var noMoreLetterDigits = false
+              while (!noMoreLetterDigits) {
                 if (input.length == 0)
-                  done = true
+                  noMoreLetterDigits = true
                 else {
                   c = input(0)
                   charClass = getCharClass(c)
-                  if (charClass == CharClass.LETTER
-                    || charClass == CharClass.DIGIT
-                    || c == '-' // FIXME: might be the wrong syntax
-                    || c == '_') {  // FIXME: might be the wrong syntax
+                  if (
+                    charClass == CharClass.LETTER || charClass == CharClass.DIGIT
+                  ) {
                     input = input.substring(1)
                     lexeme += c
-                  }
-                  else
-                    done = true
+                  } else
+                    noMoreLetterDigits = true
                 }
               }
-              return new LexemeUnit(lexeme, Token.META_IDENT)
+              if (WORD_TO_TOKEN contains lexeme) {
+                return new LexemeUnit(lexeme, WORD_TO_TOKEN(lexeme))
+              } else {
+                return new LexemeUnit(lexeme, Token.IDENTIFIER)
+              }
             }
 
-            // TODO: recognize a terminal-string
-            if (c == '´') {
+            // check input starting with a digit
+            // allow combination with other digits
+            // return as INT_LITERAL
+            if (charClass == CharClass.DIGIT) {
               input = input.substring(1)
               lexeme += c
-              var done = false
-              while (!done) {
+              var noMoreDigits = false
+              while (!noMoreDigits) {
                 if (input.length == 0)
-                  done = true
+                  noMoreDigits = true
                 else {
                   c = input(0)
                   charClass = getCharClass(c)
-                  if (c != '´') {
+                  if (charClass == CharClass.DIGIT) {
                     input = input.substring(1)
                     lexeme += c
-                  }
-                  else
-                    done = true
+                  } else
+                    noMoreDigits = true
                 }
               }
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.TERMINAL_STRING)
+              return new LexemeUnit(lexeme, Token.INT_LITERAL)
             }
 
-            // TODO: recognize new line symbol
-            if (c == '\n') {
-              input = input.substring(1)
-              lexeme += "nl"
-              return new LexemeUnit(lexeme, Token.NEW_LINE)
-            }
-
-            // TODO: recognize defining symbol
-            if (c == '=') {
+            // check input starting with a operator or punctuator
+            // allow combination with more operators or punctuators
+            // return as INT_LITERAL
+            if (
+              charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR
+            ) {
               input = input.substring(1)
               lexeme += c
-              return new LexemeUnit(lexeme, Token.DEFINING_SYMBOL)
-            }
-
-            // TODO: recognize pipe symbol
-            if (c == '|') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.PIPE)
-            }
-
-            // TODO: recognize open straight bracket symbol
-            if (c == '[') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.OPEN_BRACKET)
-            }
-
-            // TODO: recognize close straight bracket symbol
-            if (c == ']') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.CLOSE_BRACKET)
-            }
-
-            // TODO: recognize open curly brace symbol
-            if (c == '{') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.OPEN_BRACE)
-            }
-
-            // TODO: recognize close curly brace symbol
-            if (c == '}') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.CLOSE_BRACE)
-            }
-
-            // TODO: recognize open parenthesis symbol
-            if (c == '(') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.OPEN_PAR)
-            }
-
-            // TODO: recognize close parenthesis symbol
-            if (c == ')') {
-              input = input.substring(1)
-              lexeme += c
-              return new LexemeUnit(lexeme, Token.CLOSE_PAR)
+              var noMore = false
+              while (!noMore) {
+                if (input.length == 0)
+                  noMore = true
+                else {
+                  c = input(0)
+                  charClass = getCharClass(c)
+                  if (
+                    charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR
+                  ) {
+                    input = input.substring(1)
+                    lexeme += c
+                  } else
+                    noMore = true
+                }
+              }
+              if (OPERATOR_PUNCTUATOR_TO_TOKEN contains lexeme) {
+                return new LexemeUnit(
+                  lexeme,
+                  OPERATOR_PUNCTUATOR_TO_TOKEN(lexeme)
+                )
+              } else
+                throw new Exception(
+                  "Lexical Analyzer Error: unrecognizable symbol(s) found!"
+                )
             }
 
             // throw an exception if an unrecognizable symbol is found
-            throw new Exception("Lexical Analyzer Error: unrecognizable symbol found!")
+            throw new Exception(
+              "Lexical Analyzer Error: unrecognizable symbol found!"
+            )
           }
         }
       } // end next
@@ -210,6 +184,45 @@ object LexicalAnalyzer {
   val LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
   val DIGITS  = "0123456789"
   val BLANKS  = " \t"
+
+  val WORD_TO_TOKEN = Map(
+    "program" -> Token.PROGRAM,
+    "read" -> Token.READ_STMT,
+    "write" -> Token.WRITE_STMT,
+    "begin" -> Token.BEGIN_STMT,
+    "end" -> Token.END_STMT,
+    "while" -> Token.WHILE_STMT,
+    "do" -> Token.DO_STMT,
+    "if" -> Token.IF_STMT,
+    "then" -> Token.THEN_STMT,
+    "else" -> Token.ELSE_STMT,
+    "true" -> Token.BOOL_LITERAL,
+    "false" -> Token.BOOL_LITERAL,
+    "var" -> Token.VAR_STMT,
+    "Integer" -> Token.TYPE_STMT,
+    "Boolean" -> Token.TYPE_STMT
+
+  val OPERATOR_PUNCTUATOR_TO_TOKEN = Map(
+    // arithmetic operators
+    "+" -> Token.ADD_OP,
+    "-" -> Token.SUB_OP,
+    "*" -> Token.MUL_OP,
+    "/" -> Token.DIV_OP,
+    // combinable
+    ">" -> Token.COMPARISON,
+    "<" -> Token.COMPARISON,
+    "=" -> Token.COMPARISON,
+    ":" -> Token.COLON, // combinable punctuator
+
+    // puncuators
+    "." -> Token.PERIOD,
+    "," -> Token.COMMA,
+    ";" -> Token.SEMI_COLON,
+    // combined
+    ">=" -> Token.COMPARISON,
+    "<=" -> Token.COMPARISON,
+    ":=" -> Token.WALRUS
+  )
 
   def main(args: Array[String]): Unit = {
     // check if source file was passed through the command-line
