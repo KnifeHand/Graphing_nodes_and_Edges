@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2a1d6f9c-82e6-4f2d-ad0d-94b94d36f466" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/PrinciplesOfProgrammingLanguages.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/PrinciplesOfProgrammingLanguages.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Activity5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgrammingAssignment1/.idea/modules/ProgrammingAssignment1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgrammingAssignment1/.idea/modules/ProgrammingAssignment1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgrammingAssignment1/src/CharClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgrammingAssignment1/src/CharClass.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgrammingAssignment1/src/LexicalAnalyzer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgrammingAssignment1/src/LexicalAnalyzer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgrammingAssignment1/src/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgrammingAssignment1/src/Token.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/activity_07_syntax_analyzer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/activity_07_syntax_analyzer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +59,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../activity_06_lexical_analyzer" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -50,16 +74,55 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
+    <state x="1342" y="121" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601260418661">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state x="1342" y="121" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260418661" />
     <state x="723" y="438" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog" timestamp="1600126917380">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="723" y="438" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1600126917380" />
+    <state x="1615" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1601260416191">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state x="1615" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260416191" />
     <state x="259" y="279" key="FileChooserDialogImpl" timestamp="1600128036688">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="259" y="279" key="FileChooserDialogImpl/-1360.0.1360.738/0.0.1920.1050@0.0.1920.1050" timestamp="1599690577682" />
     <state x="259" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1600128036688" />
+    <state width="1154" height="229" key="GridCell.Tab.0.bottom" timestamp="1601260736694">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state width="1154" height="229" key="GridCell.Tab.0.bottom/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260736694" />
+    <state width="1154" height="229" key="GridCell.Tab.0.center" timestamp="1601260736693">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state width="1154" height="229" key="GridCell.Tab.0.center/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260736693" />
+    <state width="1154" height="229" key="GridCell.Tab.0.left" timestamp="1601260736692">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state width="1154" height="229" key="GridCell.Tab.0.left/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260736692" />
+    <state width="1154" height="229" key="GridCell.Tab.0.right" timestamp="1601260736694">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state width="1154" height="229" key="GridCell.Tab.0.right/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260736694" />
+    <state x="1366" y="41" key="SettingsEditor" timestamp="1601260206211">
+      <screen x="1280" y="23" width="1196" height="873" />
+    </state>
+    <state x="1366" y="41" key="SettingsEditor/1280.23.1196.873/0.23.1280.777@1280.23.1196.873" timestamp="1601260206211" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599686176031">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

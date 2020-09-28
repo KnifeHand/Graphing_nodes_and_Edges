@@ -319,7 +319,7 @@ class SyntaxAnalyzer(private var source: String) {
     tree.add(parseIdentifier())
     getLexemeUnit()
 
-    if (lexemeUnit.getToken() == Token.WALRUS){
+    if (lexemeUnit.getToken() == Token.COLON_EQUALS){
       tree.add(new Tree(lexemeUnit.getLexeme()))
       lexemeUnit = null
       getLexemeUnit()

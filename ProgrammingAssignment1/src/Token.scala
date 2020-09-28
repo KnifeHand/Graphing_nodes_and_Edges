@@ -22,7 +22,7 @@ object Token extends Enumeration {
         val SEMI_COLON = Value
         val PROGRAM = Value
         val BOOL_LITERAL = Value
-        val WALRUS = Value
+        val COLON_EQUALS = Value
         val READ_STMT = Value
         val WRITE_STMT = Value
         val IF_STMT = Value

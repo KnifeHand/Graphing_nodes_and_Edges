@@ -1,4 +1,4 @@
-import LexicalAnalyzer.{OPERATOR_PUNCTUATOR_TO_TOKEN, WORD_TO_TOKEN}
+import LexicalAnalyzer.{OP_PUNCTUATION_TOKEN, WORD_TO_TOKEN}
 
 import scala.io.Source
 import java.lang.Object
@@ -6,7 +6,8 @@ import java.lang.Object
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
- * Description: Activity 07 - Lexical Analyzer
+ * Description: Programming Assignment 1
+ * Student: Matt Hurt, Stuart Griffin
 
 program = ´program´ identifier body ´.´
 identifier = letter { ( letter | digit ) }
@@ -51,13 +52,13 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
     else if (c == '+' || c == '-' || c == '*' || c == '/'|| c == '>' || c == '<' || c == '=')
       CharClass.OPERATOR
     else if ((c == '.') || (c == ',') || (c == ';') || (c == ':'))
-      CharClass.DELIMITER
+      CharClass.PUNCTUATION
     else
       CharClass.OTHER
   }
 
   // reads the input until a non-blank character is found, returning the input updated
-  private def readBlanks: Unit = {
+  def readBlanks(): Unit = {
     var foundNonBlank = false
     while (input.length > 0 && !foundNonBlank) {
       val c = input(0)
@@ -72,7 +73,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
     new Iterator[LexemeUnit] {
 
       override def hasNext: Boolean = {
-        readBlanks
+        readBlanks()
         input.length > 0
       }
 
@@ -81,7 +82,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
           new LexemeUnit("", Token.EOF)
         else {
           var lexeme = ""
-          readBlanks
+          readBlanks()
           if (input.length == 0)
             new LexemeUnit(lexeme, Token.EOF)
           else {
@@ -114,9 +115,8 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
               }
             }
 
-            // check input starting with a digit
-            // allow combination with other digits
-            // return as INT_LITERAL
+            // Checks to see if input is a digit and concatenates with the other digits
+            // Returns an INT_LITERAL
             if (charClass == CharClass.DIGIT) {
               input = input.substring(1)
               lexeme += c
@@ -137,11 +137,11 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
               return new LexemeUnit(lexeme, Token.INT_LITERAL)
             }
 
-            // check input starting with a operator or punctuator
-            // allow combination with more operators or punctuators
-            // return as INT_LITERAL
+            // Checks to see if OPERATOR or PUNCTUATION concatenates
+            // with OPERATORS or PUNCTUATION
+            // Return as INT_LITERAL
             if (
-              charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR
+              charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATION
             ) {
               input = input.substring(1)
               lexeme += c
@@ -152,20 +152,18 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
                 else {
                   c = input(0)
                   charClass = getCharClass(c)
-                  if (charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR) {
+                  if (charClass == CharClass.OPERATOR || charClass == CharClass.PUNCTUATION) {
                     input = input.substring(1)
                     lexeme += c
                   } else
                     noMore = true
                 }
               }
-              if (OPERATOR_PUNCTUATOR_TO_TOKEN contains lexeme) {
-                return new LexemeUnit(lexeme, OPERATOR_PUNCTUATOR_TO_TOKEN(lexeme))
+              if (OP_PUNCTUATION_TOKEN contains lexeme) {
+                return new LexemeUnit(lexeme, OP_PUNCTUATION_TOKEN(lexeme))
               } else
                 throw new Exception("Lexical Analyzer Error: unrecognizable symbol(s) found!")
             }
-
-            // throw an exception if an unrecognizable symbol is found
             throw new Exception("Lexical Analyzer Error: unrecognizable symbol found!")
           }
         }
@@ -177,9 +175,9 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
 object LexicalAnalyzer {
   val LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
   val DIGITS  = "0123456789"
-  val BLANKS  = " \t"
+  val BLANKS  = " \n\t"
 
-  val WORD_TO_TOKEN = Map(
+  val WORD_TO_TOKEN: Map[String, Token.Value] = Map(
     "program" -> Token.PROGRAM,
     "read" -> Token.READ_STMT,
     "write" -> Token.WRITE_STMT,
@@ -196,30 +194,23 @@ object LexicalAnalyzer {
     "Integer" -> Token.TYPE_STMT,
     "Boolean" -> Token.TYPE_STMT)
 
-  val OPERATOR_PUNCTUATOR_TO_TOKEN = Map(
-    // arithmetic operators
+  val OP_PUNCTUATION_TOKEN = Map(
     "+" -> Token.ADD_OP,
     "-" -> Token.SUB_OP,
     "*" -> Token.MUL_OP,
     "/" -> Token.DIV_OP,
-    // combinable
     ">" -> Token.COMPARISON,
     "<" -> Token.COMPARISON,
     "=" -> Token.COMPARISON,
-    ":" -> Token.COLON, // combinable punctuator
-
-    // puncuators
-    "." -> Token.PERIOD,
-    "," -> Token.COMMA,
-    ";" -> Token.SEMI_COLON,
-    // combined
+    ":" -> Token.COLON,
     ">=" -> Token.COMPARISON,
     "<=" -> Token.COMPARISON,
-    ":=" -> Token.WALRUS
-  )
+    ":=" -> Token.COLON_EQUALS,
+    "." -> Token.PERIOD,
+    "," -> Token.COMMA,
+    ";" -> Token.SEMI_COLON)
 
   def main(args: Array[String]): Unit = {
-    // check if source file was passed through the command-line
     if (args.length != 1) {
       print("Missing source file!")
       System.exit(1)
