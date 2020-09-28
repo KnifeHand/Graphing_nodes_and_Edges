@@ -1,6 +1,7 @@
 import LexicalAnalyzer.{OPERATOR_PUNCTUATOR_TO_TOKEN, WORD_TO_TOKEN}
 
 import scala.io.Source
+import java.lang.Object
 
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
@@ -49,7 +50,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
       CharClass.BLANK
     else if (c == '+' || c == '-' || c == '*' || c == '/'|| c == '>' || c == '<' || c == '=')
       CharClass.OPERATOR
-    else if ((c eq '.') || (c eq ',') || (c eq ';') || (c eq ':'))
+    else if ((c == '.') || (c == ',') || (c == ';') || (c == ':'))
       CharClass.DELIMITER
     else
       CharClass.OTHER
@@ -151,9 +152,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
                 else {
                   c = input(0)
                   charClass = getCharClass(c)
-                  if (
-                    charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR
-                  ) {
+                  if (charClass == CharClass.OPERATOR | charClass == CharClass.PUNCTUATOR) {
                     input = input.substring(1)
                     lexeme += c
                   } else
@@ -161,20 +160,13 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
                 }
               }
               if (OPERATOR_PUNCTUATOR_TO_TOKEN contains lexeme) {
-                return new LexemeUnit(
-                  lexeme,
-                  OPERATOR_PUNCTUATOR_TO_TOKEN(lexeme)
-                )
+                return new LexemeUnit(lexeme, OPERATOR_PUNCTUATOR_TO_TOKEN(lexeme))
               } else
-                throw new Exception(
-                  "Lexical Analyzer Error: unrecognizable symbol(s) found!"
-                )
+                throw new Exception("Lexical Analyzer Error: unrecognizable symbol(s) found!")
             }
 
             // throw an exception if an unrecognizable symbol is found
-            throw new Exception(
-              "Lexical Analyzer Error: unrecognizable symbol found!"
-            )
+            throw new Exception("Lexical Analyzer Error: unrecognizable symbol found!")
           }
         }
       } // end next
