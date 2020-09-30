@@ -1,7 +1,8 @@
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
- * Description: Activity 05 - LexemeUnit
+ * Description: Programming Assignment 1 - LexemeUnit
+ * Student: Matt Hurt, Stuart Griffin
  *
  * "What the lexical analyzer will pass to the syntax analyzer is the pairs of lexeme
  * and tokens"

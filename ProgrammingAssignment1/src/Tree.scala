@@ -1,8 +1,8 @@
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
- * Description: Activity 07 - Tree
- *
+ * Description: Programming Assignment 1 - Tree
+ * Student: Matt Hurt, Stuart Griffin
  *
  */
 

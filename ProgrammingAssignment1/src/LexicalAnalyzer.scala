@@ -1,7 +1,6 @@
 import LexicalAnalyzer.{OP_PUNCTUATION_TOKEN, WORD_TO_TOKEN}
 
 import scala.io.Source
-import java.lang.Object
 
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
@@ -88,7 +87,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
           else {
             var c = input(0)
             var charClass = getCharClass(c)
-
+            // TODOf: recognize a letter followed by letters (or digits) as an identifier
             if (charClass == CharClass.LETTER) {
               input = input.substring(1)
               lexeme += c
@@ -115,8 +114,7 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
               }
             }
 
-            // Checks to see if input is a digit and concatenates with the other digits
-            // Returns an INT_LITERAL
+            // TODOf: recognize multiple digits as a literal
             if (charClass == CharClass.DIGIT) {
               input = input.substring(1)
               lexeme += c
@@ -152,17 +150,22 @@ class LexicalAnalyzer(private var source: String) extends Iterable[LexemeUnit] {
                 else {
                   c = input(0)
                   charClass = getCharClass(c)
-                  if (charClass == CharClass.OPERATOR || charClass == CharClass.PUNCTUATION) {
+                  if (charClass == CharClass.OPERATOR) {
                     input = input.substring(1)
                     lexeme += c
-                  } else
+                  }
+                  if (charClass == CharClass.PUNCTUATION){
+                    input = input.substring(1)
+                    lexeme += c
+                  }
+                  else
                     noMore = true
                 }
               }
               if (OP_PUNCTUATION_TOKEN contains lexeme) {
                 return new LexemeUnit(lexeme, OP_PUNCTUATION_TOKEN(lexeme))
               } else
-                throw new Exception("Lexical Analyzer Error: unrecognizable symbol(s) found!")
+                throw new Exception("Lexical Analyzer Error: unrecognizable symbols found!")
             }
             throw new Exception("Lexical Analyzer Error: unrecognizable symbol found!")
           }
@@ -178,21 +181,21 @@ object LexicalAnalyzer {
   val BLANKS  = " \n\t"
 
   val WORD_TO_TOKEN: Map[String, Token.Value] = Map(
+    "begin" -> Token.BEGIN_STMT,
+    "Boolean" -> Token.TYPE_STMT,
+    "do" -> Token.DO_STMT,
+    "else" -> Token.ELSE_STMT,
+    "end" -> Token.END_STMT,
+    "false" -> Token.BOOL_LITERAL,
+    "if" -> Token.IF_STMT,
+    "Integer" -> Token.TYPE_STMT,
     "program" -> Token.PROGRAM,
     "read" -> Token.READ_STMT,
-    "write" -> Token.WRITE_STMT,
-    "begin" -> Token.BEGIN_STMT,
-    "end" -> Token.END_STMT,
-    "while" -> Token.WHILE_STMT,
-    "do" -> Token.DO_STMT,
-    "if" -> Token.IF_STMT,
     "then" -> Token.THEN_STMT,
-    "else" -> Token.ELSE_STMT,
     "true" -> Token.BOOL_LITERAL,
-    "false" -> Token.BOOL_LITERAL,
     "var" -> Token.VAR_STMT,
-    "Integer" -> Token.TYPE_STMT,
-    "Boolean" -> Token.TYPE_STMT)
+    "write" -> Token.WRITE_STMT,
+    "while" -> Token.WHILE_STMT)
 
   val OP_PUNCTUATION_TOKEN = Map(
     "+" -> Token.ADD_OP,

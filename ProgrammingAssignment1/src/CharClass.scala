@@ -1,7 +1,8 @@
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
- * Description: Prg01 - CharClass
+ * Description: Programming Assignment 1 - CharClass
+ * Student: Matt Hurt, Stuart Griffin
  *
  */
 
