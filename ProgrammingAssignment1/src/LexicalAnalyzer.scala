@@ -181,21 +181,21 @@ object LexicalAnalyzer {
   val BLANKS  = " \n\t"
 
   val WORD_TO_TOKEN: Map[String, Token.Value] = Map(
-    "begin" -> Token.BEGIN_STMT,
-    "Boolean" -> Token.TYPE_STMT,
-    "do" -> Token.DO_STMT,
-    "else" -> Token.ELSE_STMT,
-    "end" -> Token.END_STMT,
-    "false" -> Token.BOOL_LITERAL,
-    "if" -> Token.IF_STMT,
-    "Integer" -> Token.TYPE_STMT,
+    "begin" -> Token.BEGIN,
+    "Boolean" -> Token.TYPE,
+    "do" -> Token.DO,
+    "else" -> Token.ELSE,
+    "end" -> Token.END,
+    "false" -> Token.BOOL,
+    "if" -> Token.IF,
+    "Integer" -> Token.TYPE,
     "program" -> Token.PROGRAM,
-    "read" -> Token.READ_STMT,
-    "then" -> Token.THEN_STMT,
-    "true" -> Token.BOOL_LITERAL,
+    "read" -> Token.READ,
+    "then" -> Token.THEN,
+    "true" -> Token.BOOL,
     "var" -> Token.VAR_STMT,
-    "write" -> Token.WRITE_STMT,
-    "while" -> Token.WHILE_STMT)
+    "write" -> Token.WRITE,
+    "while" -> Token.WHILE)
 
   val OP_PUNCTUATION_TOKEN = Map(
     "+" -> Token.ADD_OP,
