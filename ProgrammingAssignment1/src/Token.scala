@@ -22,16 +22,16 @@ object Token extends Enumeration {
         val COMMA = Value
         val SEMI_COLON = Value
         val PROGRAM = Value
-        val BOOL_LITERAL = Value
+        val BOOL = Value
         val COLON_EQUALS = Value
-        val READ_STMT = Value
-        val WRITE_STMT = Value
-        val IF_STMT = Value
-        val WHILE_STMT = Value
-        val BEGIN_STMT = Value
-        val END_STMT = Value
-        val DO_STMT = Value
-        val THEN_STMT = Value
-        val ELSE_STMT = Value
-        val TYPE_STMT = Value
+        val READ = Value
+        val WRITE = Value
+        val IF = Value
+        val WHILE = Value
+        val BEGIN = Value
+        val END = Value
+        val DO = Value
+        val THEN = Value
+        val ELSE = Value
+        val TYPE = Value
         }
