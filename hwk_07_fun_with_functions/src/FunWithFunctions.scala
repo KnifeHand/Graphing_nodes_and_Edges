@@ -8,7 +8,8 @@ import scala.collection.mutable.ArrayBuffer
 
 object FunWithFunctions {
 
-  // TODO #1: splitter takes a sequence of integers and returns a tuple containing two sequences of integers: the first one with the negative values and the second one with the positive values
+  // TODO #1: splitter takes a sequence of integers and returns a tuple containing two sequences of
+  //  integers: the first one with the negative values and the second one with the positive values
   def splitter(seq: Seq[Int]): (Seq[Int], Seq[Int]) = {
 
   }
