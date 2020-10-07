@@ -49,9 +49,7 @@ object FP {
   }
 
   // TODO #5: write function *coprime* that takes two integers and returns true/false whether the numbers are coprimes (their GCD equals to 1).
-  def coprime(a: Int, b: Int) = gcd(a,b) == 1{
-
-  }
+  def coprime(a: Int, b: Int): Boolean = gcd(a,b) == 1
   // Recursive function to
   // return gcd of a and b
 //  def int __gcd(int a, int b)
@@ -87,6 +85,9 @@ object FP {
 
   // TODO #7: version 2 of *totientPhi*
   def totienPhiV2(m: Int): =
+
+  var m: Int = ???
+
   {
     val values = new ArrayBuffer[Int]
     for (d <- 1 until m)
