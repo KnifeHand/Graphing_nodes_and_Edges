@@ -27,6 +27,7 @@ class Tree(var label: String) {
 //    ArrayBuffer → Growable
   def add(branch: Tree): Unit = branches += branch // FIXMEd: addOne is not a value member?
 
+  def getBranches = branches
   // print the tree horizontally in a text format
   /*
   expected outcome of parse stream:
