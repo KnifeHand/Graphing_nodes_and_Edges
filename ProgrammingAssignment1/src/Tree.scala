@@ -27,7 +27,7 @@ class Tree(var label: String) {
 //    ArrayBuffer → Growable
   def add(branch: Tree): Unit = branches += branch // FIXMEd: addOne is not a value member?
 
-  def getBranches = branches
+  //def getBranches = branches
   // print the tree horizontally in a text format
   /*
   expected outcome of parse stream:
@@ -56,20 +56,20 @@ class Tree(var label: String) {
 // example code
 // How to create a tree.  Each tree node has a label
 object Tree {
-//  def main(args: Array[String]): Unit = {
-//    // each branch is a tree by itself
-//    val tree = new Tree("A") // "A" is going to be the root
-//    val ab1 = new Tree("ab1")
-//    val ab2 = new Tree("ab2")
-//    val ab3 = new Tree("ab3")
-//    val abc1 = new Tree("abc1")
-//    val abc2 = new Tree("abc2")
-//    // How to connect all the nodes.
-//    tree.add(ab1) // label of branch
-//    tree.add(ab2)
-//    tree.add(ab3)
-//    ab1.add(abc1) // subbranch from ab1
-//    ab1.add(abc2) // subbranch from ab1
-//    print(tree)
-//  }
+  def main(args: Array[String]): Unit = {
+    // each branch is a tree by itself
+    val tree = new Tree("A") // "A" is going to be the root
+    val ab1 = new Tree("ab1")
+    val ab2 = new Tree("ab2")
+    val ab3 = new Tree("ab3")
+    val abc1 = new Tree("abc1")
+    val abc2 = new Tree("abc2")
+    // How to connect all the nodes.
+    tree.add(ab1) // label of branch
+    tree.add(ab2)
+    tree.add(ab3)
+    ab1.add(abc1) // subbranch from ab1
+    ab1.add(abc2) // subbranch from ab1
+    print(tree)
+  }
 }

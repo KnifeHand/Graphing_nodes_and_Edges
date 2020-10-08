@@ -47,6 +47,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseArithm(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("arithm_expr")
     val tr = new Tree("arithm_expr'")
     val token = lexemeUnit.getToken()
@@ -74,6 +75,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseBody(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("body")
     val token = lexemeUnit.getToken()
     val varStmt = Token.VAR_STMT
@@ -90,6 +92,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseBool(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("bool_expr")
     val token = lexemeUnit.getToken()
     val bool = Token.BOOL
@@ -125,6 +128,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseBlock(): Tree = {
+    getLexemeUnit()
     var cmp = true
     val end = Token.END
     val eof = Token.EOF
@@ -171,6 +175,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseColEq(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("assgm_stmt")
     val lex = new Tree(lexemeUnit.getLexeme())
     val token = lexemeUnit.getToken()
@@ -190,6 +195,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseDecVar(): Tree = {
+    getLexemeUnit()
     val lex = lexemeUnit.getLexeme()
     val add = new Tree(lex)
     val colon = Token.COLON
@@ -225,6 +231,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseExpr(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("expr")
     val bool = Token.BOOL
     val id = Token.IDENTIFIER
@@ -247,6 +254,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseFactor(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("factor")
     val token = lexemeUnit.getToken()
     val eof = Token.EOF
@@ -275,6 +283,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseIf(): Tree = {
+    getLexemeUnit()
     val ifStmt = Token.IF
     val elseStmt = Token.ELSE
     val thenStmt = Token.THEN
@@ -312,6 +321,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseID(): Tree = {
+    getLexemeUnit()
     val token = lexemeUnit.getToken()
     val id = Token.IDENTIFIER
     val lex = lexemeUnit.getLexeme()
@@ -339,6 +349,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parsePrime(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("arithm_expr'")
     val token = lexemeUnit.getToken()
     val lex = lexemeUnit.getLexeme()
@@ -382,6 +393,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseStmt(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("stmt")
     val token = lexemeUnit.getToken()
     val id = Token.IDENTIFIER
@@ -411,6 +423,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseType(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("type")
     val token = lexemeUnit.getToken()
     val typeOf = Token.TYPE
@@ -430,6 +443,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseVar(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("var_sct")
     val eof = Token.EOF
     val begin = Token.BEGIN
@@ -461,6 +475,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseWhile(): Tree = {
+    getLexemeUnit()
     val tree = new Tree("while_stmt")
     val tr = new Tree(lexemeUnit.getLexeme())
     val token = lexemeUnit.getToken()
@@ -482,7 +497,7 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseWrite(): Tree = {
-
+    getLexemeUnit()
     val tree = new Tree("write_stmt")
     val tr = new Tree(lexemeUnit.getLexeme())
     val token = lexemeUnit.getToken()
@@ -501,8 +516,9 @@ class SyntaxAnalyzer(private var source: String) {
   // program = `program` identifier body `.`
   private def parsePrgm() = {
     // create a tree with label "program"
+    getLexemeUnit()
     val tree = new Tree("program")
-    val token = lexemeUnit.getToken()
+    val token = lexemeUnit.getToken() //FIXME: not getting the Token?
     val pgm = Token.PROGRAM
     val lex = lexemeUnit.getLexeme()
     val tr = new Tree(lex)
@@ -510,6 +526,7 @@ class SyntaxAnalyzer(private var source: String) {
     val eof = Token.EOF
     // return the tree
     getLexemeUnit()
+
     if (token != pgm) {
       throw new Exception("Syntax Analyzer Error: program expected!")
     }
@@ -518,6 +535,7 @@ class SyntaxAnalyzer(private var source: String) {
     getLexemeUnit()
     tree.add(parseID())
     tree.add(parseBody())
+
     if (token == period) {
       tree.add(tr)
       lexemeUnit = null
@@ -532,6 +550,7 @@ class SyntaxAnalyzer(private var source: String) {
     else {
       throw new Exception("Syntax Analyzer Error: EOF expected!")
     }
+    tree
   }
 
   private def parseTerm(): Tree = {
