@@ -175,7 +175,8 @@ class SyntaxAnalyzer(private var source: String) {
   }
 
   private def parseColEq(): Tree = {
-    getLexemeUnit()
+    val test = getLexemeUnit()
+    print(test)
     val tree = new Tree("assgm_stmt")
     val lex = new Tree(lexemeUnit.getLexeme())
     val token = lexemeUnit.getToken()
@@ -188,8 +189,14 @@ class SyntaxAnalyzer(private var source: String) {
       lexemeUnit = null
       getLexemeUnit()
     }
-    else
-      throw new Exception("Syntax Analyzer Error: 'Colon_Equals := assignment' expected!")
+    else {
+      throw new Exception("\nSyntax Analyzer Error: 'Colon_Equals:= assignment' expected!\n"
+        + "\ntoken: " + token
+        + "\nlex: " + lex
+        + "tree: " + tree
+        + "coleq: " + coleq + "\n"
+        + "parsetree: " + "\n")
+    }
     tree.add(parseExpr())
     tree
   }
