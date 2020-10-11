@@ -8,30 +8,30 @@
 
 // TODO: update this enumeration with the token possible values
 object Token extends Enumeration {
-        val EOF = Value
-        val IDENTIFIER = Value
-        val INT_LITERAL = Value
-        val VAR_STMT = Value
-        val ADD_OP = Value
-        val SUB_OP = Value
-        val MUL_OP = Value
-        val DIV_OP = Value
-        val COMPARISON = Value
-        val COLON = Value
-        val PERIOD = Value
-        val COMMA = Value
-        val SEMI_COLON = Value
-        val PROGRAM = Value
-        val BOOL = Value
-        val COLON_EQUALS = Value
-        val READ = Value
-        val WRITE = Value
-        val IF = Value
-        val WHILE = Value
-        val BEGIN = Value
-        val END = Value
-        val DO = Value
-        val THEN = Value
-        val ELSE = Value
-        val TYPE = Value
+        val EOF: Token.Value = Value
+        val IDENTIFIER: Token.Value = Value
+        val INT_LITERAL: Token.Value = Value
+        val VAR: Token.Value = Value
+        val ADD_OP: Token.Value = Value
+        val SUB_OP: Token.Value = Value
+        val MUL_OP: Token.Value = Value
+        val DIV_OP: Token.Value = Value
+        val COMPARISON: Token.Value = Value
+        val COLON: Token.Value = Value
+        val PERIOD: Token.Value = Value
+        val COMMA: Token.Value = Value
+        val SEMI_COLON: Token.Value = Value
+        val PROGRAM: Token.Value = Value
+        val BOOL: Token.Value = Value
+        val COLON_EQUALS: Token.Value = Value
+        val READ: Token.Value = Value
+        val WRITE: Token.Value = Value
+        val IF: Token.Value = Value
+        val WHILE: Token.Value = Value
+        val BEGIN: Token.Value = Value
+        val END: Token.Value = Value
+        val DO: Token.Value = Value
+        val THEN: Token.Value = Value
+        val ELSE: Token.Value = Value
+        val TYPE: Token.Value = Value
         }

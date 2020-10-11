@@ -193,7 +193,7 @@ object LexicalAnalyzer {
     "read" -> Token.READ,
     "then" -> Token.THEN,
     "true" -> Token.BOOL,
-    "var" -> Token.VAR_STMT,
+    "var" -> Token.VAR,
     "write" -> Token.WRITE,
     "while" -> Token.WHILE)
 
