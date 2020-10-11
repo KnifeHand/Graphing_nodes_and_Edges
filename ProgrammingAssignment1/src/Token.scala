@@ -11,7 +11,7 @@ object Token extends Enumeration {
         val EOF = Value
         val IDENTIFIER = Value
         val INT_LITERAL = Value
-        val VAR_STMT = Value
+        val VAR = Value
         val ADD_OP = Value
         val SUB_OP = Value
         val MUL_OP = Value
