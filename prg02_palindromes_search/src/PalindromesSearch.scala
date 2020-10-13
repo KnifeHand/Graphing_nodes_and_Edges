@@ -1,3 +1,5 @@
+import sun.jvm.hotspot.HelloWorld.e
+
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
@@ -6,6 +8,42 @@
  */
 
 object PalindromesSearch {
+
+  def isPalUtil(num: Int, dupNum: Int): {
+      val num = new List[](num,dupNum)
+
+      // base condition to return once we
+      // move past first digit
+      if (num == 0) {
+        return dupNum;
+      } else {
+        dupNum = isPalUtil(num / 10, dupNum);
+      }
+
+      // Check for equality of first digit of
+      // num and dupNum
+      if (num % 10 == dupNum % 10) {
+        // if first digit values of num and
+        // dupNum are equal divide dupNum
+        // value by 10 to keep moving in sync
+        // with num.
+        return dupNum / 10;
+      } else {
+        // At position values are not
+        // matching throw exception and exit.
+        // no need to proceed further.
+        throw new Exception();
+      }
+
+    }
+
+  def isPal(num: Int): Int = {
+    if(num <0){
+      val num = num - num
+      val dupNum = (num)
+      return isPalUtil(num, dupNum)
+    }
+  }
   val OUTPUT_FILE_NAME = "output.txt"
   /**
    * Checks whether the given string 's' is palindrome or not.
@@ -49,6 +87,56 @@ object PalindromesSearch {
     else search(1, 1, 1, 1)
   }
   def main(args: Array[String]): Unit = {
-    
+    val n = 1242
+    try {
+      isPal(n)
+      System.out.println("Yes")
+    }
+//    //catch () {
+//      System.out.println("No");
+//    }
+    int n = 1242;
+    try {
+      isPal(n);
+      System.out.println("Yes");
+    } catch (Exception e) {
+      System.out.println("No");
+    }
+    n = 1231;
+    try {
+      isPal(n);
+      System.out.println("Yes");
+    } catch (Exception e) {
+      System.out.println("No");
+    }
+
+    n = 12;
+    try {
+      isPal(n);
+      System.out.println("Yes");
+    } catch (Exception e) {
+      System.out.println("No");
+    }
+
+    n = 88;
+    try {
+      isPal(n);
+      System.out.println("Yes");
+    } catch (Exception e) {
+      System.out.println("No");
+    }
+
+    n = 8999;
+    try {
+      isPal(n);
+      System.out.println("Yes");
+    } catch (Exception e) {
+      System.out.println("No");
+    }
+  }
+}
+
+// This code is contributed
+// by Nasir J
   }
 }
