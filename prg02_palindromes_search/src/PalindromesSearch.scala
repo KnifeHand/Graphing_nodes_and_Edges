@@ -1,5 +1,10 @@
 import java.util.Scanner
 
+//import scala.collection.immutable.HashMap.EmptyHashMap.seq
+//import scala.collection.mutable._
+import scala.collection.immutable._
+import scala.collection.mutable.ArrayBuffer
+
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
@@ -15,12 +20,24 @@ object PalindromesSearch {
 
   val OUTPUT_FILE_NAME = "output.txt"
 
+  def checkIfnIsPalindrome(seq: Seq[Int]): Seq[Int] = {
+    //val x = Array(n) // check if an array sums to n
+    //    val isPalindrome(seq: ArrayBuffer[Int] => Boolean) =  1 until length(seq)/2) => (_==_)
+    //    def sumToN(seq: ArrayBuffer[Int], func: Int => Boolean)  = (seq.foldLeft(0)(_ + _) == n)
+    val x = /*List(seq)*/ for (el <- seq; if(el < 0)) yield el
+    return x.toList
+  }
+
   // Function to generate all unique partitions of an integer
   def generatePartition(n: Int): Unit = {
     val partition = new Array[Int](n) // Array to store a partition
     var indexOfLastElementInPartition = 0 // Index of last element in a partition
     partition(indexOfLastElementInPartition) = n // Initialize first partition as n itself
-    val x = Array(n) // check if an array sums to n
+    //n.toInt
+    checkIfnIsPalindrome(n.toSeq)
+
+
+
     //isPalindrome(arrayNew: Seq[Int])
 
     while ( {
