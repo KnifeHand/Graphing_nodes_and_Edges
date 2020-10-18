@@ -8,7 +8,8 @@ import scala.collection.mutable.ArrayBuffer
 
 object FP {
 
-  // TODO #1: write function *isPrime* that takes an integer and returns true/false whether the input is a prime number or not.
+  // TODO #1: write function *isPrime* that takes an integer and returns 
+     true/false whether the input is a prime number or not.
   def isPrimeV1(n: Int): Boolean = {
     for (d <- 2 to n - 1)
       if (n % d == 0)
@@ -31,7 +32,8 @@ object FP {
       (2 to math.sqrt(n).toInt).map(n % _ != 0).reduceLeft(_ && _)
   }
 
-  // TODO #3: write function *gcd* that takes two integers and returns the GCD (Greatest Common Divisor) of the two inputs.
+  // TODO #3: write function *gcd* that takes two integers and 
+     returns the GCD (Greatest Common Divisor) of the two inputs.
   // hint: use the Euclidean algorithm!
   def gcd(a: Int, b: Int): Int = {
     if (a % b == 0)
