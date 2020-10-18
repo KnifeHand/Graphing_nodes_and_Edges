@@ -1,5 +1,8 @@
 import java.util.Scanner
 
+import scala.collection.immutable.Nil.seq
+import scala.collection.immutable._
+
 /*
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
@@ -20,6 +23,8 @@ object PalindromesSearch {
     val partition = new Array[Int](n) // Array to store a partition
     var indexOfLastElementInPartition = 0 // Index of last element in a partition
     partition(indexOfLastElementInPartition) = n // Initialize first partition as n itself
+    val arrayNew = Seq(n)
+    seq.diff(Array(1,2))+"\n")
 
     while ( {
       true
