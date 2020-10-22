@@ -26,7 +26,7 @@
 
     // Driver code
     def main(args: Array[String]): Unit = {
-      val str = "mom"
+      val str = "omm"
       if (isPalindrome(str)) System.out.print("Yes")
       else System.out.print("No")
     }
