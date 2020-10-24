@@ -13,7 +13,6 @@ object Partition {
     }
   }
 
-
   def main(args: Array[String]): Unit = {
     val n = args(0).toInt
     partition(n)
