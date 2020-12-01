@@ -74,7 +74,11 @@ func (ps *PubSub) Unsubscribe(msgCh chan interface{}) {
 	ps.unsubCh <- msgCh
 }
 
-func (ps *PubSub) Publish(msg interface{}) {
+func (ps *PubSub) StreetPublish(msg interface{}) {
+	ps.publishCh <- msg
+}
+
+func (ps *PubSub) BeePublish(msg interface{}) {
 	ps.publishCh <- msg
 }
 
@@ -114,18 +118,23 @@ func main() {
 	// Start publishing messages:
 	go func() {
 		for publisher := 0; ; publisher++ {
-			//ps.Publish(fmt.Sprintf("msg#%d", msgId))
-			ps.Publish("bees are polinators.")
-			time.Sleep(200 * time.Millisecond)
-			ps.Publish("bees produce honey")
-			time.Sleep(200 * time.Millisecond)
-			ps.Publish("all worker bees are female")
-			time.Sleep(200 * time.Millisecond)
-			ps.Publish("bees have 5 eyes,")
-			time.Sleep(200 * time.Millisecond)
-			ps.Publish("bees fly about 20mph")
+			ps.BeePublish(fmt.Sprintf("msg#%d", publisher))
+			ps.BeePublish("bees are polinators.")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 			//time.Sleep(200 * time.Millisecond)
-			ps.Publish("Streets are cool")
+			ps.BeePublish("bees produce honey")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(200 * time.Millisecond)
+			ps.BeePublish("all worker bees are female")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(200 * time.Millisecond)
+			ps.BeePublish("bees have 5 eyes,")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(200 * time.Millisecond)
+			ps.BeePublish("bees fly about 20mph")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(200 * time.Millisecond)
+			ps.StreetPublish("Streets are cool")
 			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 		}
 	}()
