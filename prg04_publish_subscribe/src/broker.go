@@ -98,7 +98,7 @@ func main() {
 		msgCh := ps.Subscribe()
 		for {
 			fmt.Printf("* %s got message: %v\n", name, <-msgCh)
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 
 		}
 
@@ -124,8 +124,9 @@ func main() {
 			ps.Publish("bees have 5 eyes,")
 			time.Sleep(200 * time.Millisecond)
 			ps.Publish("bees fly about 20mph")
-			time.Sleep(200 * time.Millisecond)
-
+			//time.Sleep(200 * time.Millisecond)
+			ps.Publish("Streets are cool")
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 		}
 	}()
 	// TODO: wait for all publishers to be done
