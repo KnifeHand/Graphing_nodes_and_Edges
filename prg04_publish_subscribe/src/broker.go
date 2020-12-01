@@ -28,6 +28,7 @@ func NewPubSub() *PubSub {
 		publishCh: make(chan interface{}, 1),
 		subCh:     make(chan chan interface{}, 1),
 		unsubCh:   make(chan chan interface{}, 1),
+		topics:    make(map[string][]chan string),
 	}
 }
 
@@ -62,7 +63,7 @@ func (ps *PubSub) Stop() {
 
 // TODO: creates and returns a new channel on a given topic, updating the PubSub struct
 func (ps *PubSub) Subscribe() chan interface{} {
-	msgCh := make(chan interface{}, 5)
+	msgCh := make(chan interface{}, 5) // Create slice
 	ps.subCh <- msgCh
 	return msgCh
 }
@@ -72,6 +73,19 @@ func (ps *PubSub) Unsubscribe(msgCh chan interface{}) {
 }
 
 func (ps *PubSub) Publish(msg interface{}) {
+	//for {
+	//	for publisher, subscribers := range subscriptions {
+	//		select{
+	//		case message := <-publisher:
+	//			for _, subscriber := range subscribers {
+	//				subscriber <- message
+	//			}
+	//			case <-time.After(time.Millisecond):
+	//		}
+	//	}
+	//
+	//
+	//}
 	ps.publishCh <- msg
 }
 
@@ -79,13 +93,19 @@ func main() {
 	// TODO: create the ps struct
 	// Create and start a PubSub:
 	ps := NewPubSub()
+	//pub1 := make(chan string)
+	//pub2 := make(chan string)
+	//
+	//sub1 := make(chan string)
+	//sub2 := make(chan string)
+	//sub3 := make(chan string)
 
 	// TODO: create the subscriber goroutines
 	go ps.Start()
 
 	// TODO: create the arrays of messages to be sent on each topic
 	// Create and subscribe 3 clients:
-	clientFunc := func(name string) {
+	subscriber := func(name string) {
 		msgCh := ps.Subscribe()
 		for {
 			fmt.Printf("* %s got message: %v\n", name, <-msgCh)
@@ -93,10 +113,10 @@ func main() {
 		}
 	}
 
-	go clientFunc("Marry")
-	go clientFunc("Tom")
-	//go publisher(streetfacts)
-	//go publisher(beefacts)
+	go subscriber("Marry")
+	go subscriber("Tom")
+
+	//go publish(beefacts)
 
 	// TODO: set wait group to 2 (# of publishers)
 	// TODO: create the publisher goroutines
