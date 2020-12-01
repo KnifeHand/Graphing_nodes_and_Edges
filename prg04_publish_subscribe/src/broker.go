@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 	"time"
 )
@@ -97,8 +98,10 @@ func main() {
 		msgCh := ps.Subscribe()
 		for {
 			fmt.Printf("* %s got message: %v\n", name, <-msgCh)
-			time.Sleep(100 * time.Millisecond)
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+
 		}
+
 	}
 
 	go subscriber("Marry")
