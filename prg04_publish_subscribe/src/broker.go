@@ -2,7 +2,7 @@
  * CS3210 - Principles of Programming Languages - Fall 2020
  * Instructor: Thyago Mota
  * Description: Prg04 - Publish Subscribe Simulation
- * Student(s) Name(s):  Matt Hurt
+ * Student(s) Name(s):  Larsen Close and Matt Hurt
  */
 
 package main
