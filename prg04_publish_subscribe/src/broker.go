@@ -36,6 +36,7 @@ var wg sync.WaitGroup
 
 // TODO: writes the given message on all the channels associated with the given topic.
 func (ps *PubSub) Start() {
+	defer wg.Done()
 	subs := map[chan interface{}]struct{}{}
 	for {
 		select {
@@ -73,19 +74,6 @@ func (ps *PubSub) Unsubscribe(msgCh chan interface{}) {
 }
 
 func (ps *PubSub) Publish(msg interface{}) {
-	//for {
-	//	for publisher, subscribers := range subscriptions {
-	//		select{
-	//		case message := <-publisher:
-	//			for _, subscriber := range subscribers {
-	//				subscriber <- message
-	//			}
-	//			case <-time.After(time.Millisecond):
-	//		}
-	//	}
-	//
-	//
-	//}
 	ps.publishCh <- msg
 }
 
@@ -122,7 +110,7 @@ func main() {
 	// TODO: create the publisher goroutines
 	// Start publishing messages:
 	go func() {
-		for msgId := 0; ; msgId++ {
+		for publisher := 0; ; publisher++ {
 			//ps.Publish(fmt.Sprintf("msg#%d", msgId))
 			ps.Publish("bees are polinators.")
 			time.Sleep(200 * time.Millisecond)
