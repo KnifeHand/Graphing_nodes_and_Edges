@@ -9,7 +9,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"sync"
 	"time"
 )
@@ -64,7 +63,13 @@ func (ps *PubSub) Stop() {
 }
 
 // TODO: creates and returns a new channel on a given topic, updating the PubSub struct
-func (ps *PubSub) Subscribe() chan interface{} {
+func (ps *PubSub) StreetSubscribe() chan interface{} {
+	msgCh := make(chan interface{}, 5) // Create slice
+	ps.subCh <- msgCh
+	return msgCh
+}
+
+func (ps *PubSub) BeeSubscribe() chan interface{} {
 	msgCh := make(chan interface{}, 5) // Create slice
 	ps.subCh <- msgCh
 	return msgCh
@@ -98,18 +103,27 @@ func main() {
 
 	// TODO: create the arrays of messages to be sent on each topic
 	// Create and subscribe 3 clients:
-	subscriber := func(name string) {
-		msgCh := ps.Subscribe()
-		for {
-			fmt.Printf("* %s got message: %v\n", name, <-msgCh)
-			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+	subscriber := func(name string, topic string) {
+		msgCh := ps.BeeSubscribe()
 
+		if topic == "streets" {
+			for {
+				fmt.Printf("* %s got message: %v\n", name, <-msgCh)
+				//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+
+			}
+		} else if topic == "bees" {
+			for {
+				fmt.Printf("* %s got message: %v\n", name, <-msgCh)
+				//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+
+			}
 		}
 
 	}
 
-	go subscriber("Marry")
-	go subscriber("Tom")
+	go subscriber("Marry", "bees")
+	go subscriber("Tom", "streets")
 
 	//go publish(beefacts)
 
@@ -118,24 +132,29 @@ func main() {
 	// Start publishing messages:
 	go func() {
 		for publisher := 0; ; publisher++ {
+			//time.Sleep(200 * time.Millisecond)
+			ps.mutex.Lock()
 			ps.BeePublish(fmt.Sprintf("msg#%d", publisher))
-			ps.BeePublish("bees are polinators.")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(200 * time.Millisecond)
+			ps.BeePublish("bees are pollinators.")
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 			//time.Sleep(200 * time.Millisecond)
 			ps.BeePublish("bees produce honey")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
-			//time.Sleep(200 * time.Millisecond)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			time.Sleep(200 * time.Millisecond)
 			ps.BeePublish("all worker bees are female")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
-			//time.Sleep(200 * time.Millisecond)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			time.Sleep(200 * time.Millisecond)
 			ps.BeePublish("bees have 5 eyes,")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
-			//time.Sleep(200 * time.Millisecond)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			time.Sleep(200 * time.Millisecond)
 			ps.BeePublish("bees fly about 20mph")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
-			//time.Sleep(200 * time.Millisecond)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			time.Sleep(200 * time.Millisecond)
 			ps.StreetPublish("Streets are cool")
-			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			//time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
+			time.Sleep(200 * time.Millisecond)
+			ps.mutex.Unlock()
 		}
 	}()
 	// TODO: wait for all publishers to be done
