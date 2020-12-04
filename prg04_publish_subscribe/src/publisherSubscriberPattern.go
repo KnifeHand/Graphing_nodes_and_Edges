@@ -39,12 +39,13 @@ func (ps PubSub) publish(topic string, msg string) {
 func publisher(ps PubSub, topic string, msgs []string) {
 	//ps.mu.Lock()
 	//defer ps.mu.Unlock()
-	time.Sleep(5 * time.Second)
+	time.Sleep(3 * time.Second)
 	for _, message := range msgs {
 		//ps.publish(topic, msgs[message])
-		time.Sleep(time.Duration(rand.Intn(7)) * time.Second)
+		time.Sleep(time.Duration(rand.Intn(5)) * time.Second)
 		ps.publish(topic, message)
 	}
+	time.Sleep(3 * time.Second)
 	wg.Done()
 }
 
@@ -62,8 +63,8 @@ func subscriber(ps PubSub, name string, topic string) {
 
 	ch := ps.subscribe(topic)
 	for {
-		if data, confirm := <-ch; confirm {
-			fmt.Println(name + "message received: " + data)
+		if fact, ready := <-ch; ready {
+			fmt.Println(name + "message received: " + fact)
 		} else {
 			break
 		}
@@ -83,7 +84,11 @@ func main() {
 	ps := PubSub{topics: make(map[string][]chan string)}
 
 	// TODO: create the arrays of messages to be sent on each topic
+	//var beesArray [5]string
 	beesArray := []string{
+		//"1","2","3","4","5",
+		//}
+		//{
 		"bees are pollinators",
 		"bees are pollinators",
 		"all worker bees are female",
@@ -97,7 +102,11 @@ func main() {
 	//beesArray[3] = "bees have 5 eyes"
 	//beesArray[4] = "bees fly about 20mph"
 
+	//var philosophyArray [5]string
 	philosophyArray := []string{
+		//"6","7","8","9","10",
+		//}
+		//{
 		"And if you gaze for long into an abyss, the abyss gazes also into you.",
 		"Dreams are the touchstones of our characters.",
 		"The question is not what you look at, but what you see.",
@@ -116,13 +125,13 @@ func main() {
 
 	// TODO: create the publisher goroutines
 
-	go publisher(ps, "bees facts", beesArray)
-	go publisher(ps, "philosophy", philosophyArray)
+	go publisher(ps, "bee facts", beesArray)
+	go publisher(ps, "philosophy quotes", philosophyArray)
 
 	// TODO: create the subscriber goroutines
-	go subscriber(ps, "broham", "bee facts")
-	go subscriber(ps, "mama", "philosophy quotes")
-	go subscriber(ps, "dingus", "philosophy quotes")
+	go subscriber(ps, "Maria ", "bee facts")
+	go subscriber(ps, "Thomas ", "philosophy quotes")
+	go subscriber(ps, "Jim ", "philosophy quotes")
 
 	// TODO: wait for all publishers to be done
 
